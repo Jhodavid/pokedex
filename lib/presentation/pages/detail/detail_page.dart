@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
 
-  const DetailPage({super.key});
+  final String pokemonName;
+  final String imageUrl;
+
+  const DetailPage({
+    super.key,
+    required this.pokemonName,
+    required this.imageUrl
+  });
 
   @override
   Widget build(BuildContext context) {

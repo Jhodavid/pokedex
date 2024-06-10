@@ -43,7 +43,7 @@ class AppTheme {
         )
       ),
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: Colors.white
+        color: Colors.white,
       ),
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(
@@ -63,8 +63,4 @@ class AppTheme {
       )
     );
   }
-
-  AppTheme copyWith({
-    final bool? isDarkMode
-  }) => AppTheme(isDarkMode: isDarkMode ?? this.isDarkMode);
 }

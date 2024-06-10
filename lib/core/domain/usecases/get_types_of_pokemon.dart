@@ -1,4 +1,6 @@
-import 'package:pokemon_johcode/core/interfaces/repositories/abstract_pokemon_repository.dart';
+
+
+import 'package:pokemon_johcode/core/domain/repositories/abstract_pokemon_repository.dart';
 
 class GetTypesOfPokemon {
   final AbstractPokemonRepository pokemonRepository;

@@ -80,6 +80,11 @@ class PokemonGraphQLApi {
               name
             }
           }
+          types {
+            type {
+              name
+            }
+          }
         }
       }
     ''';

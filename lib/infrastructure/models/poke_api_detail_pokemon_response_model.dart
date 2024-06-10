@@ -34,6 +34,7 @@ class PokeApiDetailPokemonModel {
   final int weight;
   final List<_PokeApiDetailPokemonAbilityModel> abilities;
   final List<_PokeApiDetailPokemonMoveModel> moves;
+  final List<_PokeApiTypesTypeModel> types;
 
   PokeApiDetailPokemonModel({
     required this.baseExperience,
@@ -43,6 +44,7 @@ class PokeApiDetailPokemonModel {
     required this.weight,
     required this.abilities,
     required this.moves,
+    required this.types
   });
 
   factory PokeApiDetailPokemonModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonModel(
@@ -53,41 +55,54 @@ class PokeApiDetailPokemonModel {
     weight: json["weight"],
     abilities: List<_PokeApiDetailPokemonAbilityModel>.from(json["abilities"].map((x) => _PokeApiDetailPokemonAbilityModel.fromJson(x))),
     moves: List<_PokeApiDetailPokemonMoveModel>.from(json["moves"].map((x) => _PokeApiDetailPokemonMoveModel.fromJson(x))),
+    types: List<_PokeApiTypesTypeModel>.from(json["types"].map((x) => _PokeApiTypesTypeModel.fromJson(x)))
   );
 }
 
 class _PokeApiDetailPokemonAbilityModel {
-  final _PokeApiDetailPokemonAbilityMoveSubModel ability;
+  final _PokeApiDetailPokemonSubModel ability;
 
   _PokeApiDetailPokemonAbilityModel({
     required this.ability,
   });
 
   factory _PokeApiDetailPokemonAbilityModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonAbilityModel(
-    ability: _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(json["ability"]),
+    ability: _PokeApiDetailPokemonSubModel.fromJson(json["ability"]),
   );
 }
 
 class _PokeApiDetailPokemonMoveModel {
-  final _PokeApiDetailPokemonAbilityMoveSubModel move;
+  final _PokeApiDetailPokemonSubModel move;
 
   _PokeApiDetailPokemonMoveModel({
     required this.move,
   });
 
   factory _PokeApiDetailPokemonMoveModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonMoveModel(
-    move: _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(json["move"]),
+    move: _PokeApiDetailPokemonSubModel.fromJson(json["move"]),
   );
 }
 
-class _PokeApiDetailPokemonAbilityMoveSubModel {
+class _PokeApiTypesTypeModel {
+  final _PokeApiDetailPokemonSubModel type;
+
+  _PokeApiTypesTypeModel({
+    required this.type,
+  });
+
+  factory _PokeApiTypesTypeModel.fromJson(Map<String, dynamic> json) => _PokeApiTypesTypeModel(
+    type: _PokeApiDetailPokemonSubModel.fromJson(json["type"]),
+  );
+}
+
+class _PokeApiDetailPokemonSubModel {
   final String name;
 
-  _PokeApiDetailPokemonAbilityMoveSubModel({
+  _PokeApiDetailPokemonSubModel({
     required this.name,
   });
 
-  factory _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonAbilityMoveSubModel(
+  factory _PokeApiDetailPokemonSubModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonSubModel(
     name: json["name"],
   );
 }
