@@ -1,43 +1,31 @@
 import 'dart:convert';
 
-PokeAPI_PokemonsResponseModel pokeApiPokemonsResponseModelFromJson(String str) => PokeAPI_PokemonsResponseModel.fromJson(json.decode(str));
+PokeApiPokemonsResponseModel pokeApiPokemonsResponseModelFromJson(String str) => PokeApiPokemonsResponseModel.fromJson(json.decode(str));
 
-class PokeAPI_PokemonsResponseModel {
-  final PokeAPI_PokemonsData data;
+class PokeApiPokemonsResponseModel {
+  final _PokeApiPokemonsModel pokemons;
 
-  PokeAPI_PokemonsResponseModel({
-    required this.data,
-  });
-
-  factory PokeAPI_PokemonsResponseModel.fromJson(Map<String, dynamic> json) => PokeAPI_PokemonsResponseModel(
-    data: PokeAPI_PokemonsData.fromJson(json["data"]),
-  );
-}
-
-class PokeAPI_PokemonsData {
-  final PokeApi_PokemonsModel pokemons;
-
-  PokeAPI_PokemonsData({
+  PokeApiPokemonsResponseModel({
     required this.pokemons,
   });
 
-  factory PokeAPI_PokemonsData.fromJson(Map<String, dynamic> json) => PokeAPI_PokemonsData(
-    pokemons: PokeApi_PokemonsModel.fromJson(json["pokemons"]),
+  factory PokeApiPokemonsResponseModel.fromJson(Map<String, dynamic> json) => PokeApiPokemonsResponseModel(
+    pokemons: _PokeApiPokemonsModel.fromJson(json["pokemons"]),
   );
 }
 
-class PokeApi_PokemonsModel {
+class _PokeApiPokemonsModel {
   final int count;
-  final String next;
-  final String previous;
+  final String? next;
+  final String? previous;
   final int nextOffset;
   final int prevOffset;
-  final PokeAPI_PokemonsParamsModel params;
+  final _PokeApiPokemonsParamsModel params;
   final bool status;
   final String message;
-  final List<PokeApi_Pokemons_PokemonModel> results;
+  final List<_PokeApiPokemonsPokemonModel> results;
 
-  PokeApi_PokemonsModel({
+  _PokeApiPokemonsModel({
     required this.count,
     required this.next,
     required this.previous,
@@ -49,35 +37,35 @@ class PokeApi_PokemonsModel {
     required this.results,
   });
 
-  factory PokeApi_PokemonsModel.fromJson(Map<String, dynamic> json) => PokeApi_PokemonsModel(
+  factory _PokeApiPokemonsModel.fromJson(Map<String, dynamic> json) => _PokeApiPokemonsModel(
     count: json["count"],
     next: json["next"],
     previous: json["previous"],
     nextOffset: json["nextOffset"],
     prevOffset: json["prevOffset"],
-    params: PokeAPI_PokemonsParamsModel.fromJson(json["params"]),
+    params: _PokeApiPokemonsParamsModel.fromJson(json["params"]),
     status: json["status"],
     message: json["message"],
-    results: List<PokeApi_Pokemons_PokemonModel>.from(json["results"].map((x) => PokeApi_Pokemons_PokemonModel.fromJson(x))),
+    results: List<_PokeApiPokemonsPokemonModel>.from(json["results"].map((x) => _PokeApiPokemonsPokemonModel.fromJson(x))),
   );
 }
 
-class PokeAPI_PokemonsParamsModel {
+class _PokeApiPokemonsParamsModel {
   final int limit;
   final int offset;
 
-  PokeAPI_PokemonsParamsModel({
+  _PokeApiPokemonsParamsModel({
     required this.limit,
     required this.offset,
   });
 
-  factory PokeAPI_PokemonsParamsModel.fromJson(Map<String, dynamic> json) => PokeAPI_PokemonsParamsModel(
+  factory _PokeApiPokemonsParamsModel.fromJson(Map<String, dynamic> json) => _PokeApiPokemonsParamsModel(
     limit: json["limit"],
     offset: json["offset"],
   );
 }
 
-class PokeApi_Pokemons_PokemonModel {
+class _PokeApiPokemonsPokemonModel {
   final int id;
   final String url;
   final String name;
@@ -85,7 +73,7 @@ class PokeApi_Pokemons_PokemonModel {
   final String artwork;
   final String dreamworld;
 
-  PokeApi_Pokemons_PokemonModel({
+  _PokeApiPokemonsPokemonModel({
     required this.id,
     required this.url,
     required this.name,
@@ -94,7 +82,7 @@ class PokeApi_Pokemons_PokemonModel {
     required this.dreamworld,
   });
 
-  factory PokeApi_Pokemons_PokemonModel.fromJson(Map<String, dynamic> json) => PokeApi_Pokemons_PokemonModel(
+  factory _PokeApiPokemonsPokemonModel.fromJson(Map<String, dynamic> json) => _PokeApiPokemonsPokemonModel(
     id: json["id"],
     url: json["url"],
     name: json["name"],

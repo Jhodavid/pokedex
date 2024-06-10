@@ -3,12 +3,13 @@ import 'package:pokemon_johcode/core/domain/entities/basic_data_pokemon/basic_da
 import 'package:pokemon_johcode/core/domain/entities/detailed_data_pokemon/detailed_data_pokemon_entity.dart';
 import 'package:pokemon_johcode/infrastructure/models/poke_api_detail_pokemon_response_model.dart';
 import 'package:pokemon_johcode/infrastructure/models/poke_api_pokemons_response_model.dart';
+import 'package:pokemon_johcode/infrastructure/models/poke_api_types_of_pokemon_response_model.dart';
 
 class PokeApiToDomainMapper {
 
-  static List<BasicDataPokemonEntity> fromApiBasicPokemonsResponse(PokeAPI_PokemonsResponseModel pokemonsResponse) {
+  static List<BasicDataPokemonEntity> fromApiBasicPokemonsResponse(PokeApiPokemonsResponseModel pokemonsResponse) {
     return List<BasicDataPokemonEntity>.from(
-      pokemonsResponse.data.pokemons.results.map(
+      pokemonsResponse.pokemons.results.map(
         (item) => BasicDataPokemonEntity(
           id: item.id,
           name: item.name,
@@ -19,7 +20,7 @@ class PokeApiToDomainMapper {
     );
   }
 
-  static DetailedDataPokemonEntity fromPokeAPIDetailPokemonResponse(PokeAPI_DetailPokemonResponseModel detailPokemonResponse) {
+  static DetailedDataPokemonEntity fromPokeAPIDetailPokemonResponse(PokeApiDetailPokemonResponseModel detailPokemonResponse) {
     return DetailedDataPokemonEntity(
       baseExperience: detailPokemonResponse.data.pokemon.baseExperience,
       height: detailPokemonResponse.data.pokemon.height,
@@ -32,6 +33,11 @@ class PokeApiToDomainMapper {
       moves: List<String>.from(
         detailPokemonResponse.data.pokemon.moves.map((item) => item.move.name),
       )
+    );
+  }
+  static List<String> fromPokeAPITypesOfPokemonResponse(PokeApiTypesOfPokemonResponseModel typesOfPokemon) {
+    return List<String>.from(
+      typesOfPokemon.pokemon.types.map((item) => item.type.name),
     );
   }
 }

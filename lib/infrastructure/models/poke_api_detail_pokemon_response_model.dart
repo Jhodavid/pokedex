@@ -1,41 +1,41 @@
 import 'dart:convert';
 
-PokeAPI_DetailPokemonResponseModel pokeApiDetailPokemonResponseModelFromJson(String str) => PokeAPI_DetailPokemonResponseModel.fromJson(json.decode(str));
+PokeApiDetailPokemonResponseModel pokeApiDetailPokemonResponseModelFromJson(String str) => PokeApiDetailPokemonResponseModel.fromJson(json.decode(str));
 
-class PokeAPI_DetailPokemonResponseModel {
-  final PokeAPI_DetailPokemonDataModel data;
+class PokeApiDetailPokemonResponseModel {
+  final PokeApiDetailPokemonDataModel data;
 
-  PokeAPI_DetailPokemonResponseModel({
+  PokeApiDetailPokemonResponseModel({
     required this.data,
   });
 
-  factory PokeAPI_DetailPokemonResponseModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonResponseModel(
-    data: PokeAPI_DetailPokemonDataModel.fromJson(json["data"]),
+  factory PokeApiDetailPokemonResponseModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonResponseModel(
+    data: PokeApiDetailPokemonDataModel.fromJson(json["data"]),
   );
 }
 
-class PokeAPI_DetailPokemonDataModel {
-  final PokeAPI_DetailPokemonModel pokemon;
+class PokeApiDetailPokemonDataModel {
+  final PokeApiDetailPokemonModel pokemon;
 
-  PokeAPI_DetailPokemonDataModel({
+  PokeApiDetailPokemonDataModel({
     required this.pokemon,
   });
 
-  factory PokeAPI_DetailPokemonDataModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonDataModel(
-    pokemon: PokeAPI_DetailPokemonModel.fromJson(json["pokemon"]),
+  factory PokeApiDetailPokemonDataModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonDataModel(
+    pokemon: PokeApiDetailPokemonModel.fromJson(json["pokemon"]),
   );
 }
 
-class PokeAPI_DetailPokemonModel {
+class PokeApiDetailPokemonModel {
   final int baseExperience;
   final int height;
   final int id;
   final String name;
   final int weight;
-  final List<PokeAPI_DetailPokemonAbilityModel> abilities;
-  final List<PokeAPI_DetailPokemonMoveModel> moves;
+  final List<_PokeApiDetailPokemonAbilityModel> abilities;
+  final List<_PokeApiDetailPokemonMoveModel> moves;
 
-  PokeAPI_DetailPokemonModel({
+  PokeApiDetailPokemonModel({
     required this.baseExperience,
     required this.height,
     required this.id,
@@ -45,49 +45,49 @@ class PokeAPI_DetailPokemonModel {
     required this.moves,
   });
 
-  factory PokeAPI_DetailPokemonModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonModel(
+  factory PokeApiDetailPokemonModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonModel(
     baseExperience: json["base_experience"],
     height: json["height"],
     id: json["id"],
     name: json["name"],
     weight: json["weight"],
-    abilities: List<PokeAPI_DetailPokemonAbilityModel>.from(json["abilities"].map((x) => PokeAPI_DetailPokemonAbilityModel.fromJson(x))),
-    moves: List<PokeAPI_DetailPokemonMoveModel>.from(json["moves"].map((x) => PokeAPI_DetailPokemonMoveModel.fromJson(x))),
+    abilities: List<_PokeApiDetailPokemonAbilityModel>.from(json["abilities"].map((x) => _PokeApiDetailPokemonAbilityModel.fromJson(x))),
+    moves: List<_PokeApiDetailPokemonMoveModel>.from(json["moves"].map((x) => _PokeApiDetailPokemonMoveModel.fromJson(x))),
   );
 }
 
-class PokeAPI_DetailPokemonAbilityModel {
-  final PokeAPI_DetailPokemonAbilityMoveSubModel ability;
+class _PokeApiDetailPokemonAbilityModel {
+  final _PokeApiDetailPokemonAbilityMoveSubModel ability;
 
-  PokeAPI_DetailPokemonAbilityModel({
+  _PokeApiDetailPokemonAbilityModel({
     required this.ability,
   });
 
-  factory PokeAPI_DetailPokemonAbilityModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonAbilityModel(
-    ability: PokeAPI_DetailPokemonAbilityMoveSubModel.fromJson(json["ability"]),
+  factory _PokeApiDetailPokemonAbilityModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonAbilityModel(
+    ability: _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(json["ability"]),
   );
 }
 
-class PokeAPI_DetailPokemonMoveModel {
-  final PokeAPI_DetailPokemonAbilityMoveSubModel move;
+class _PokeApiDetailPokemonMoveModel {
+  final _PokeApiDetailPokemonAbilityMoveSubModel move;
 
-  PokeAPI_DetailPokemonMoveModel({
+  _PokeApiDetailPokemonMoveModel({
     required this.move,
   });
 
-  factory PokeAPI_DetailPokemonMoveModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonMoveModel(
-    move: PokeAPI_DetailPokemonAbilityMoveSubModel.fromJson(json["move"]),
+  factory _PokeApiDetailPokemonMoveModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonMoveModel(
+    move: _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(json["move"]),
   );
 }
 
-class PokeAPI_DetailPokemonAbilityMoveSubModel {
+class _PokeApiDetailPokemonAbilityMoveSubModel {
   final String name;
 
-  PokeAPI_DetailPokemonAbilityMoveSubModel({
+  _PokeApiDetailPokemonAbilityMoveSubModel({
     required this.name,
   });
 
-  factory PokeAPI_DetailPokemonAbilityMoveSubModel.fromJson(Map<String, dynamic> json) => PokeAPI_DetailPokemonAbilityMoveSubModel(
+  factory _PokeApiDetailPokemonAbilityMoveSubModel.fromJson(Map<String, dynamic> json) => _PokeApiDetailPokemonAbilityMoveSubModel(
     name: json["name"],
   );
 }

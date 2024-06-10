@@ -5,17 +5,15 @@ class AppTheme {
 
   static const _colorDefaultScheme = ColorScheme(
     brightness: Brightness.light,
-    surfaceTint: Color.fromARGB(255, 216, 216, 216),
+    surfaceTint: Colors.white,
     error: Colors.red,
     onError: Colors.redAccent,
     primary: Color(0xff5ce1e6),
     onPrimary: Colors.white,
     secondary: Color(0xff8c52ff),
     onSecondary: Colors.white,
-    tertiary: Color(0xFF273a89),
-    surface: Colors.blueAccent,
-    onSurface: Color(0xff94d793),
-    onSurfaceVariant: Color(0xff0092e4),
+    surface: Colors.white,
+    onSurface: Color(0xff8c52ff),
   );
 
   AppTheme({this.isDarkMode = false});
@@ -29,15 +27,32 @@ class AppTheme {
       colorScheme: _colorDefaultScheme,
       textTheme: baseTheme.textTheme.copyWith(
         titleLarge: const TextStyle(
-          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          color: Colors.black
         ),
         labelLarge: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold
+          fontWeight: FontWeight.bold,
+          color: Colors.white
+        ),
+        labelMedium: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white
         ),
         displayMedium: const TextStyle(
-          color: Colors.white,
           fontWeight: FontWeight.bold
+        )
+      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Colors.white
+      ),
+      cardTheme: CardTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        )
+      ),
+      iconButtonTheme: const IconButtonThemeData(
+        style: ButtonStyle(
+          iconColor: WidgetStatePropertyAll<Color>(Colors.black)
         )
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(

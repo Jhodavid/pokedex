@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:pokemon_johcode/infrastructure/clients/poke_api_graphql_client.dart';
 import 'package:pokemon_johcode/presentation/theme/app_theme.dart';
 import 'package:pokemon_johcode/presentation/router/app_router.dart';
 import 'package:pokemon_johcode/presentation/localization/app_localization.dart';
 
 
 
-void main() {
+void main() async {
+  await initHiveForFlutter();
+  PokeAPIGraphQLClient.initClient();
+
   runApp( const ProviderScope( child: MainApp() ));
 }
 
