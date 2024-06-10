@@ -12,6 +12,7 @@ class DetailedDataPokemonEntity with _$DetailedDataPokemonEntity {
     required int weight,
     required List<String> abilities,
     required List<String> moves,
+    required List<String> types
 
   }) = _DetailedDataPokemonEntity;
 }

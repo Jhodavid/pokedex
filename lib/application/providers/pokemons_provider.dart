@@ -11,7 +11,10 @@ import 'package:pokemon_johcode/infrastructure/repositories/poke_api_repository_
 
 
 final pokemonsProvider = StateNotifierProvider<PokemonsNotifier, PokemonsState>((ref)  {
-  final getBasicDataPokemons = GetBasicDataPokemons(PokeAPIRepositoryImpl(PokemonGraphQLApi(PokeAPIGraphQLClient.client)));
+  final client = PokeAPIGraphQLClient.client;
+  final dataSource = PokemonGraphQLApi(client);
+  final repository = PokeAPIRepositoryImpl(dataSource);
+  final getBasicDataPokemons = GetBasicDataPokemons(repository);
 
   return PokemonsNotifier(getBasicDataPokemons);
 });
@@ -39,10 +42,14 @@ class PokemonsNotifier  extends StateNotifier< PokemonsState> {
 
       offset = offset + limit;
       state = state.copyWith(
+        hasError: false,
         pokemons: [...state.pokemons, ...pokemons],
       );
     } catch(e) {
       if(kDebugMode) print(e);
+      state = state.copyWith(
+        hasError: true
+      );
     }
 
     state = state.copyWith(isLoading: false);

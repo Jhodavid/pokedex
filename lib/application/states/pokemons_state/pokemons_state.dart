@@ -8,6 +8,7 @@ part 'pokemons_state.freezed.dart';
 @freezed
 class PokemonsState with _$PokemonsState {
   const factory PokemonsState({
+    @Default(false) bool hasError,
     @Default(false) bool isLoading,
     @Default([]) List<BasicDataPokemonEntity> pokemons,
   }) = _PokemonsState;

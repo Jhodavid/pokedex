@@ -22,16 +22,19 @@ class PokeApiToDomainMapper {
 
   static DetailedDataPokemonEntity fromPokeAPIDetailPokemonResponse(PokeApiDetailPokemonResponseModel detailPokemonResponse) {
     return DetailedDataPokemonEntity(
-      baseExperience: detailPokemonResponse.data.pokemon.baseExperience,
-      height: detailPokemonResponse.data.pokemon.height,
-      id: detailPokemonResponse.data.pokemon.id,
-      name: detailPokemonResponse.data.pokemon.name,
-      weight: detailPokemonResponse.data.pokemon.weight,
+      baseExperience: detailPokemonResponse.pokemon.baseExperience,
+      height: detailPokemonResponse.pokemon.height,
+      id: detailPokemonResponse.pokemon.id,
+      name: detailPokemonResponse.pokemon.name,
+      weight: detailPokemonResponse.pokemon.weight,
       abilities: List<String>.from(
-        detailPokemonResponse.data.pokemon.abilities.map((item) => item.ability.name),
+        detailPokemonResponse.pokemon.abilities.map((item) => item.ability.name),
       ),
       moves: List<String>.from(
-        detailPokemonResponse.data.pokemon.moves.map((item) => item.move.name),
+        detailPokemonResponse.pokemon.moves.map((item) => item.move.name),
+      ),
+      types: List<String>.from(
+        detailPokemonResponse.pokemon.types.map((item) => item.type.name),
       )
     );
   }

@@ -23,6 +23,7 @@ mixin _$DetailedDataPokemonEntity {
   int get weight => throw _privateConstructorUsedError;
   List<String> get abilities => throw _privateConstructorUsedError;
   List<String> get moves => throw _privateConstructorUsedError;
+  List<String> get types => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DetailedDataPokemonEntityCopyWith<DetailedDataPokemonEntity> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $DetailedDataPokemonEntityCopyWith<$Res> {
       String name,
       int weight,
       List<String> abilities,
-      List<String> moves});
+      List<String> moves,
+      List<String> types});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$DetailedDataPokemonEntityCopyWithImpl<$Res,
     Object? weight = null,
     Object? abilities = null,
     Object? moves = null,
+    Object? types = null,
   }) {
     return _then(_value.copyWith(
       baseExperience: null == baseExperience
@@ -96,6 +99,10 @@ class _$DetailedDataPokemonEntityCopyWithImpl<$Res,
           ? _value.moves
           : moves // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      types: null == types
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -116,7 +123,8 @@ abstract class _$$DetailedDataPokemonEntityImplCopyWith<$Res>
       String name,
       int weight,
       List<String> abilities,
-      List<String> moves});
+      List<String> moves,
+      List<String> types});
 }
 
 /// @nodoc
@@ -139,6 +147,7 @@ class __$$DetailedDataPokemonEntityImplCopyWithImpl<$Res>
     Object? weight = null,
     Object? abilities = null,
     Object? moves = null,
+    Object? types = null,
   }) {
     return _then(_$DetailedDataPokemonEntityImpl(
       baseExperience: null == baseExperience
@@ -169,6 +178,10 @@ class __$$DetailedDataPokemonEntityImplCopyWithImpl<$Res>
           ? _value._moves
           : moves // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      types: null == types
+          ? _value._types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -183,9 +196,11 @@ class _$DetailedDataPokemonEntityImpl implements _DetailedDataPokemonEntity {
       required this.name,
       required this.weight,
       required final List<String> abilities,
-      required final List<String> moves})
+      required final List<String> moves,
+      required final List<String> types})
       : _abilities = abilities,
-        _moves = moves;
+        _moves = moves,
+        _types = types;
 
   @override
   final int baseExperience;
@@ -213,9 +228,17 @@ class _$DetailedDataPokemonEntityImpl implements _DetailedDataPokemonEntity {
     return EqualUnmodifiableListView(_moves);
   }
 
+  final List<String> _types;
+  @override
+  List<String> get types {
+    if (_types is EqualUnmodifiableListView) return _types;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_types);
+  }
+
   @override
   String toString() {
-    return 'DetailedDataPokemonEntity(baseExperience: $baseExperience, height: $height, id: $id, name: $name, weight: $weight, abilities: $abilities, moves: $moves)';
+    return 'DetailedDataPokemonEntity(baseExperience: $baseExperience, height: $height, id: $id, name: $name, weight: $weight, abilities: $abilities, moves: $moves, types: $types)';
   }
 
   @override
@@ -231,7 +254,8 @@ class _$DetailedDataPokemonEntityImpl implements _DetailedDataPokemonEntity {
             (identical(other.weight, weight) || other.weight == weight) &&
             const DeepCollectionEquality()
                 .equals(other._abilities, _abilities) &&
-            const DeepCollectionEquality().equals(other._moves, _moves));
+            const DeepCollectionEquality().equals(other._moves, _moves) &&
+            const DeepCollectionEquality().equals(other._types, _types));
   }
 
   @override
@@ -243,7 +267,8 @@ class _$DetailedDataPokemonEntityImpl implements _DetailedDataPokemonEntity {
       name,
       weight,
       const DeepCollectionEquality().hash(_abilities),
-      const DeepCollectionEquality().hash(_moves));
+      const DeepCollectionEquality().hash(_moves),
+      const DeepCollectionEquality().hash(_types));
 
   @JsonKey(ignore: true)
   @override
@@ -261,7 +286,8 @@ abstract class _DetailedDataPokemonEntity implements DetailedDataPokemonEntity {
       required final String name,
       required final int weight,
       required final List<String> abilities,
-      required final List<String> moves}) = _$DetailedDataPokemonEntityImpl;
+      required final List<String> moves,
+      required final List<String> types}) = _$DetailedDataPokemonEntityImpl;
 
   @override
   int get baseExperience;
@@ -277,6 +303,8 @@ abstract class _DetailedDataPokemonEntity implements DetailedDataPokemonEntity {
   List<String> get abilities;
   @override
   List<String> get moves;
+  @override
+  List<String> get types;
   @override
   @JsonKey(ignore: true)
   _$$DetailedDataPokemonEntityImplCopyWith<_$DetailedDataPokemonEntityImpl>

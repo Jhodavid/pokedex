@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PokemonsState {
+  bool get hasError => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<BasicDataPokemonEntity> get pokemons =>
       throw _privateConstructorUsedError;
@@ -31,7 +32,8 @@ abstract class $PokemonsStateCopyWith<$Res> {
           PokemonsState value, $Res Function(PokemonsState) then) =
       _$PokemonsStateCopyWithImpl<$Res, PokemonsState>;
   @useResult
-  $Res call({bool isLoading, List<BasicDataPokemonEntity> pokemons});
+  $Res call(
+      {bool hasError, bool isLoading, List<BasicDataPokemonEntity> pokemons});
 }
 
 /// @nodoc
@@ -47,10 +49,15 @@ class _$PokemonsStateCopyWithImpl<$Res, $Val extends PokemonsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? hasError = null,
     Object? isLoading = null,
     Object? pokemons = null,
   }) {
     return _then(_value.copyWith(
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -71,7 +78,8 @@ abstract class _$$PokemonsStateImplCopyWith<$Res>
       __$$PokemonsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<BasicDataPokemonEntity> pokemons});
+  $Res call(
+      {bool hasError, bool isLoading, List<BasicDataPokemonEntity> pokemons});
 }
 
 /// @nodoc
@@ -85,10 +93,15 @@ class __$$PokemonsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? hasError = null,
     Object? isLoading = null,
     Object? pokemons = null,
   }) {
     return _then(_$PokemonsStateImpl(
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -105,10 +118,14 @@ class __$$PokemonsStateImplCopyWithImpl<$Res>
 
 class _$PokemonsStateImpl implements _PokemonsState {
   const _$PokemonsStateImpl(
-      {this.isLoading = false,
+      {this.hasError = false,
+      this.isLoading = false,
       final List<BasicDataPokemonEntity> pokemons = const []})
       : _pokemons = pokemons;
 
+  @override
+  @JsonKey()
+  final bool hasError;
   @override
   @JsonKey()
   final bool isLoading;
@@ -123,7 +140,7 @@ class _$PokemonsStateImpl implements _PokemonsState {
 
   @override
   String toString() {
-    return 'PokemonsState(isLoading: $isLoading, pokemons: $pokemons)';
+    return 'PokemonsState(hasError: $hasError, isLoading: $isLoading, pokemons: $pokemons)';
   }
 
   @override
@@ -131,14 +148,16 @@ class _$PokemonsStateImpl implements _PokemonsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PokemonsStateImpl &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._pokemons, _pokemons));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(_pokemons));
+  int get hashCode => Object.hash(runtimeType, hasError, isLoading,
+      const DeepCollectionEquality().hash(_pokemons));
 
   @JsonKey(ignore: true)
   @override
@@ -149,9 +168,12 @@ class _$PokemonsStateImpl implements _PokemonsState {
 
 abstract class _PokemonsState implements PokemonsState {
   const factory _PokemonsState(
-      {final bool isLoading,
+      {final bool hasError,
+      final bool isLoading,
       final List<BasicDataPokemonEntity> pokemons}) = _$PokemonsStateImpl;
 
+  @override
+  bool get hasError;
   @override
   bool get isLoading;
   @override

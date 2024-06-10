@@ -43,75 +43,128 @@ class _HomePageState extends ConsumerState<HomePage> {
     final textTheme = Theme.of(context).textTheme;
     final pokemonsProviderState = ref.watch(pokemonsProvider);
 
+    final width = MediaQuery.of(context).size.width;
+
+    int getPokemonsCrossAxisCount () {
+      final sections = (width / 187);
+      return sections.floor();
+    }
+
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: Scrollbar(
-          interactive: true,
-          thumbVisibility: true,
-          controller: _scrollController,
-          child: CustomScrollView(
-            controller: _scrollController,
-            slivers: [
-              SliverAppBar(
-                floating: true,
-                titleSpacing: 0,
-                toolbarHeight: 80,
-                leadingWidth: 0,
-                title: Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Text(
-                    'Pokedex',
-                    style: textTheme.titleLarge,
-                  ),
-                ),
-                centerTitle: false,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: IconButton(
-                      onPressed: () {
-
-                      },
-                      icon: const Icon(Icons.tune_rounded)
+        child: Stack(
+          children: [
+            Scrollbar(
+              interactive: true,
+              thumbVisibility: true,
+              controller: _scrollController,
+              child: CustomScrollView(
+                controller: _scrollController,
+                slivers: [
+                  SliverAppBar(
+                    floating: true,
+                    titleSpacing: 0,
+                    toolbarHeight: 80,
+                    leadingWidth: 0,
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Text(
+                        'Pokedex',
+                        style: textTheme.titleLarge,
+                      ),
                     ),
+                    centerTitle: false,
+                    actions: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: IconButton(
+                          onPressed: () {
+
+                          },
+                          icon: const Icon(Icons.tune_rounded)
+                        ),
+                      )
+                    ],
+                  ),
+
+                  SliverPadding(
+                    padding: const EdgeInsets.only(
+                      left: 15,
+                      right: 15,
+                      bottom: 10
+                    ),
+                    sliver: SliverGrid.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: getPokemonsCrossAxisCount(),
+                        crossAxisSpacing: 5,
+                        mainAxisExtent: 150
+                      ),
+                      itemCount: pokemonsProviderState.pokemons.length,
+                      itemBuilder: (context, index) {
+                        return PokemonCard(pokemon: pokemonsProviderState.pokemons[index]);
+                      },
+                    ),
+                  ),
+
+                  if(pokemonsProviderState.isLoading) SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: LinearProgressIndicator(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(5),
+                        backgroundColor: Colors.black12,
+                      ),
+                    )
                   )
                 ],
               ),
-
-              SliverPadding(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  bottom: 10
+            ),
+            if(pokemonsProviderState.hasError && !pokemonsProviderState.isLoading) Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 65,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.95),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(15)
+                  )
                 ),
-                sliver: SliverGrid.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 5,
-                    mainAxisExtent: 150
-                  ),
-                  itemCount: pokemonsProviderState.pokemons.length,
-                  itemBuilder: (context, index) {
-                    return PokemonCard(pokemon: pokemonsProviderState.pokemons[index]);
+                child: TextButton(
+                  onPressed: () {
+                    ref.read(pokemonsProvider.notifier).searchPokemons();
                   },
+                  child: Column(
+                    children: [
+                      const Icon(Icons.restart_alt_outlined, color: Colors.red),
+                      const SizedBox(height: 5),
+                      Text(
+                        'Error on load pokemons, press here and try again.',
+                        style: textTheme.labelMedium?.copyWith(
+                            color: Colors.red
+                        ),
+                      ),
+                    ],
+                  )
                 ),
               ),
-
-              if(pokemonsProviderState.isLoading) SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: LinearProgressIndicator(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(5),
-                    backgroundColor: Colors.black12,
-                  ),
-                )
-              )
-            ],
-          ),
+            ),
+          ],
         ),
-      )
+      ),
+      floatingActionButton: getPokemonsCrossAxisCount() > 4
+        ? FloatingActionButton.extended(
+            label: Text(
+              'Load More',
+              style: textTheme.labelMedium,
+            ),
+            icon: const Icon(Icons.downloading_rounded),
+            onPressed: () {
+              ref.read(pokemonsProvider.notifier).searchPokemons();
+            },
+          )
+        : Container()
     );
   }
 }

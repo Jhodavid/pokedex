@@ -38,8 +38,9 @@ class AppTheme {
           fontWeight: FontWeight.bold,
           color: Colors.white
         ),
-        displayMedium: const TextStyle(
-          fontWeight: FontWeight.bold
+        displaySmall: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white
         )
       ),
       progressIndicatorTheme: const ProgressIndicatorThemeData(

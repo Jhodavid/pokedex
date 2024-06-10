@@ -3,25 +3,13 @@ import 'dart:convert';
 PokeApiDetailPokemonResponseModel pokeApiDetailPokemonResponseModelFromJson(String str) => PokeApiDetailPokemonResponseModel.fromJson(json.decode(str));
 
 class PokeApiDetailPokemonResponseModel {
-  final PokeApiDetailPokemonDataModel data;
-
-  PokeApiDetailPokemonResponseModel({
-    required this.data,
-  });
-
-  factory PokeApiDetailPokemonResponseModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonResponseModel(
-    data: PokeApiDetailPokemonDataModel.fromJson(json["data"]),
-  );
-}
-
-class PokeApiDetailPokemonDataModel {
   final PokeApiDetailPokemonModel pokemon;
 
-  PokeApiDetailPokemonDataModel({
+  PokeApiDetailPokemonResponseModel({
     required this.pokemon,
   });
 
-  factory PokeApiDetailPokemonDataModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonDataModel(
+  factory PokeApiDetailPokemonResponseModel.fromJson(Map<String, dynamic> json) => PokeApiDetailPokemonResponseModel(
     pokemon: PokeApiDetailPokemonModel.fromJson(json["pokemon"]),
   );
 }
