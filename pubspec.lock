@@ -385,10 +385,10 @@ packages:
     dependency: transitive
     description:
       name: graphql
-      sha256: d066e53446166c12537458386b507f7426f2b8801ebafc184576aab3cbc64d56
+      sha256: ad11e6d12de4d73971ae1dd80885b09f3cbc0bf143b1cbc5622a6dc6d85735e7
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.0-beta.7"
+    version: "5.2.0-beta.4"
   graphql_flutter:
     dependency: "direct main"
     description:
@@ -417,10 +417,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
+      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "0.13.6"
   http_multi_server:
     dependency: transitive
     description:
@@ -541,6 +541,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  mockito:
+    dependency: "direct dev"
+    description:
+      name: mockito
+      sha256: "6841eed20a7befac0ce07df8116c8b8233ed1f4486a7647c7fc5a02ae6163917"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.4"
   nm:
     dependency: transitive
     description:
@@ -722,14 +730,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
-  sprintf:
-    dependency: transitive
-    description:
-      name: sprintf
-      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -806,10 +806,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "814e9e88f21a176ae1359149021870e87f7cddaf633ab678a5d2b0bff7fd1ba8"
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "3.0.7"
   vector_math:
     dependency: transitive
     description:

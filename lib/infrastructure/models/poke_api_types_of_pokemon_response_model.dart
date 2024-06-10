@@ -3,49 +3,49 @@ import 'dart:convert';
 PokeApiTypesOfPokemonResponseModel pokeApiTypesOfPokemonResponseModelFromJson(String str) => PokeApiTypesOfPokemonResponseModel.fromJson(json.decode(str));
 
 class PokeApiTypesOfPokemonResponseModel {
-  final _PokeApiTypesPokemonModel pokemon;
+  final PokeApiTypesPokemonModel pokemon;
 
   PokeApiTypesOfPokemonResponseModel({
     required this.pokemon,
   });
 
   factory PokeApiTypesOfPokemonResponseModel.fromJson(Map<String, dynamic> json) => PokeApiTypesOfPokemonResponseModel(
-    pokemon: _PokeApiTypesPokemonModel.fromJson(json["pokemon"]),
+    pokemon: PokeApiTypesPokemonModel.fromJson(json["pokemon"]),
   );
 }
 
-class _PokeApiTypesPokemonModel {
-  final List<_PokeApiTypesTypeModel> types;
+class PokeApiTypesPokemonModel {
+  final List<PokeApiTypesTypeModel> types;
 
-  _PokeApiTypesPokemonModel({
+  PokeApiTypesPokemonModel({
     required this.types,
   });
 
-  factory _PokeApiTypesPokemonModel.fromJson(Map<String, dynamic> json) => _PokeApiTypesPokemonModel(
-    types: List<_PokeApiTypesTypeModel>.from(json["types"].map((x) => _PokeApiTypesTypeModel.fromJson(x))),
+  factory PokeApiTypesPokemonModel.fromJson(Map<String, dynamic> json) => PokeApiTypesPokemonModel(
+    types: List<PokeApiTypesTypeModel>.from(json["types"].map((x) => PokeApiTypesTypeModel.fromJson(x))),
   );
 }
 
-class _PokeApiTypesTypeModel {
-  final _PokeApiTypesTypeSubModel type;
+class PokeApiTypesTypeModel {
+  final PokeApiTypesTypeSubModel type;
 
-  _PokeApiTypesTypeModel({
+  PokeApiTypesTypeModel({
     required this.type,
   });
 
-  factory _PokeApiTypesTypeModel.fromJson(Map<String, dynamic> json) => _PokeApiTypesTypeModel(
-    type: _PokeApiTypesTypeSubModel.fromJson(json["type"]),
+  factory PokeApiTypesTypeModel.fromJson(Map<String, dynamic> json) => PokeApiTypesTypeModel(
+    type: PokeApiTypesTypeSubModel.fromJson(json["type"]),
   );
 }
 
-class _PokeApiTypesTypeSubModel {
+class PokeApiTypesTypeSubModel {
   final String name;
 
-  _PokeApiTypesTypeSubModel({
+  PokeApiTypesTypeSubModel({
     required this.name,
   });
 
-  factory _PokeApiTypesTypeSubModel.fromJson(Map<String, dynamic> json) => _PokeApiTypesTypeSubModel(
+  factory PokeApiTypesTypeSubModel.fromJson(Map<String, dynamic> json) => PokeApiTypesTypeSubModel(
     name: json["name"],
   );
 }
